@@ -1283,6 +1283,8 @@ img {
 }
 .article-inner {
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .article-meta::before,
 .article-meta::after {
