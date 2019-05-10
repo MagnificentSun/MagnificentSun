@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[关于MarkDown语法]]></title>
+    <url>%2F2019%2F05%2F09%2F%E5%85%B3%E4%BA%8EMarkDown%E8%AF%AD%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[一、标题等级标题等级标题等级标题等级标题等级标题等级123用 星号 “ * ” 区分在文字前面加几个星号就是几级标题最多六级 二、粗体斜体 斜体 粗体 粗斜体1234* *斜体** **粗体*** ***粗斜体***分割线就是 “***” 三个星号即可 三、列表 无序列表 一个 * 号，星号后面加空格 显示实心圆 两个空格 再加上一个 * 号 再加一个空格 显示空心圆12*（一个空格）内容（两个空格）*（一个空格）内容 有序列表12341. 内容2. 内容3. 空格数字. 空格 内容 有序和无序也可以混搭12341. 第一级* 内容 * 第二级 * 内容 四、引用 引用 引用 引用123&gt; 引用&gt;&gt; 引用&gt;&gt;&gt; 引用 五、插入链接 这是我github地址！！！ 1[这是我github地址！！！](https://github.com/MagnificentSun) 1![这是我的突突突！！！](https://stock.tuchong.com/image?fromSimilarSearch=&amp;imageId=238565135354167627&amp;requestId=4fdb11a581af472fa39b799c1a6072a3&amp;searchId=f7aa7d30041d47d79ad19ae591212212&amp;term=%E7%8B%97) 六、表格 标题1 标题2 标题3 内容1 内容2 内容3 内容1 内容2 内容3 1234567891011标题1|标题2|标题3--- | --- |----内容1|内容2|内容3内容1|内容2|内容3第二行的 ---|---|--- 有几个标题写几个---|---|---|--- 这就是有四个标题 ---|--- 这就是有两个标题而且 - 和 | 之间有无空格以及个数（最少一个）没太大限制 可按自己要求调整比如我的例子那么大的缝]]></content>
+      <tags>
+        <tag>MarkDown语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[关于Token的理解]]></title>
+    <url>%2F2019%2F04%2F28%2FToken%2F</url>
+    <content type="text"><![CDATA[一下午的倾情打造 首先，先了解一下request和session的区别12request 指在一次请求的全过程中有效，即从http请求到服务器处理结束，返回响应的整个过程，存放在HttpServletRequest对象中。在这个过程中可以使用forward方式跳转多个jsp。在这些页面里你都可以使用这个变量。request是用户请求访问的当前组件，以及和当前web组件共享同一用户请求的web组件。如：被请求的jsp页面和该页面用&lt;include&gt;指令包含的页面以及&lt;forward&gt;标记包含的其它jsp页面； Session是用户全局变量，在整个会话期间都有效。只要页面不关闭就一直有效（或者直到用户一直未活动导致会话过期，默认session过期时间为30分钟，或调用HttpSession的invalidate()方法）。存放在HttpSession对象中 ，同一个http会话中的web组件共享它。 token主要有两个作用: 12①:防止表单重复提交(防止表单重复提交一般还是使用前后端都限制的方式，比如：在前端点击提交之后，将按钮置为灰色，不可再次点击，然后客户端和服务端的token各自独立存储，客户端存储在Cookie或者Form的隐藏域（放在Form隐藏域中的时候，需要每个表单）中，服务端存储在Session（单机系统中可以使用）或者其他缓存系统（分布式系统可以使用）中。) ②：用来作身份验证 token主要有两个作用: 1主要的理念是，客户端初始化的时候，一般就是刚刚进入页面的时候就调用后端代码，后端代码生成一个token,返回给客户端，客户端储存token（可以在前台使用Form表单中使用隐藏域来存储这个Token，也可以使用cookie）,然后就将request(请求)中的token与（session）中的token进行比较; 使用基于 Token 的身份验证方法，在服务端不需要存储用户的登录记录。大概的流程是这样的: 客户端使用用户名跟密码请求登录 服务端收到请求，去验证用户名与密码 验证成功后，服务端会签发一个 Token，再把这个 Token 发送给客户端 客户端收到 Token 以后可以把它存储起来，比如放在 Cookie 里或者 Local Storage 里 客户端每次向服务端请求资源的时候需要带着服务端签发的 Token 服务端收到请求，然后去验证客户端请求里面带着的 Token，如果验证成功，就向客户端返回请求的数据]]></content>
+      <categories>
+        <category>搭建博客</category>
+      </categories>
+      <tags>
+        <tag>Token</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[你好,Mr·Sun！]]></title>
+    <url>%2F2019%2F04%2F28%2F%E4%BD%A0%E5%A5%BD%20Mr%C2%B7Sun%EF%BC%81%2F</url>
+    <content type="text"><![CDATA[一上午的倾情打造我觉得还是有下划线的标题好看 所以我就用了最大 但是我觉得密钥代码好长所以给大家分享福利^_^检查是否由.ssh的文件夹cd ~/.ssh 输入ls，列出该文件下的内容ls 输入ssh-keygen -t rsa -C “929762930@qq.com”，连续三个回车，生成密钥，最后得到了两个文件：id_rsa和id_rsa.pub（默认存储路径是：C:\Users\Administrator.ssh)ssh-keygen -t rsa -C “*****@qq.com” 输入eval “$(ssh-agent -s)”，添加密钥到ssh-agenteval &quot;$(ssh-agent -s)&quot; 再输入ssh-add ~/.ssh/id_rsa，添加生成的SSH key到ssh-agentssh-add ~/.ssh/id_rsa 1进入Github，点击头像下的settings，添加ssh 收尾]]></content>
+      <categories>
+        <category>搭建博客</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>github</tag>
+        <tag>npm基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F04%2F28%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
