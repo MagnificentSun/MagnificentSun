@@ -1131,7 +1131,7 @@ img {
   height: auto;
 }
 .video .brand {
-  width: 6.2rem;
+  width: 3.2rem;
 }
 .video-frame {
   position: absolute;
@@ -1984,14 +1984,14 @@ pre .javascript .function {
 .navbar .nav.nav-main .nav-item:nth-child(1) .nav-item-link::before {
   content: '\f12f';
 }
-.navbar .nav.nav-main .nav-item:nth-child(4) .nav-item-link::before {
-  content: '\f12a';
+.navbar .nav.nav-main .nav-item:nth-child(2) .nav-item-link::before {
+  content: '\f174';
 }
 .navbar .nav.nav-main .nav-item:nth-child(3) .nav-item-link::before {
   content: '\f1a9';
 }
-.navbar .nav.nav-main .nav-item:nth-child(2) .nav-item-link::before {
-  content: '\f174';
+.navbar .nav.nav-main .nav-item:nth-child(4) .nav-item-link::before {
+  content: '\f12a';
 }
 .navbar-bottom {
   position: absolute;
