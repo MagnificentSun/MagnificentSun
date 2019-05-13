@@ -1126,28 +1126,12 @@ img {
   display: inline-block;
   padding: 0 0.75rem;
 }
-.tag-list {
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
-}
-.tag-list > .tag-list-item {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-}
-.tag-list > .tag-list-item:before {
-  content: "\f153";
-  font-family: feathericon;
-  margin-right: 0.5rem;
-}
 .video {
   position: relative;
   height: auto;
 }
 .video .brand {
-  width: 4.8rem;
+  width: 6.2rem;
 }
 .video-frame {
   position: absolute;
@@ -2018,7 +2002,7 @@ pre .javascript .function {
   text-align: center;
 }
 .logo img {
-  width: 4.8rem;
+  width: 3.2rem;
 }
 .totop {
   position: relative;
@@ -2041,11 +2025,11 @@ pre .javascript .function {
     transform: translateY(0);
     opacity: 1;
   }
-  45% {
+  40% {
     transform: translateY(-3.2rem);
     opacity: 0;
   }
-  55% {
+  60% {
     transform: translateY(3.2rem);
     opacity: 0;
   }
@@ -2059,11 +2043,11 @@ pre .javascript .function {
     transform: translateY(0);
     opacity: 1;
   }
-  45% {
+  40% {
     transform: translateY(-3.2rem);
     opacity: 0;
   }
-  55% {
+  60% {
     transform: translateY(3.2rem);
     opacity: 0;
   }
@@ -2077,11 +2061,11 @@ pre .javascript .function {
     transform: translateY(0);
     opacity: 1;
   }
-  45% {
+  40% {
     transform: translateY(-3.2rem);
     opacity: 0;
   }
-  55% {
+  60% {
     transform: translateY(3.2rem);
     opacity: 0;
   }
@@ -2095,11 +2079,11 @@ pre .javascript .function {
     transform: translateY(0);
     opacity: 1;
   }
-  45% {
+  40% {
     transform: translateY(-3.2rem);
     opacity: 0;
   }
-  55% {
+  60% {
     transform: translateY(3.2rem);
     opacity: 0;
   }
