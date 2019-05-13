@@ -79,7 +79,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://magnificentsun.github.io/blog/2019/04/28/你好 Mr·Sun！/" data-id="cjvlztwob00048wfsiqz4pr1c" class="article-share-link">Share</a>
+      <a data-url="https://magnificentsun.github.io/blog/2019/04/28/你好 Mr·Sun！/" data-id="cjvm0j0tk000444fsnpfphq5w" class="article-share-link">Share</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm基础/">npm基础</a></li></ul>
 
@@ -91,11 +91,11 @@
     
   <nav class="article-nav">
     
-      <a href="/2019/04/28/hello-world/" class="article-nav-link">
+      <a href="/2019/04/28/Token/" class="article-nav-link">
         <strong class="article-nav-caption">Newer posts</strong>
         <div class="article-nav-title">
           
-            Hello World
+            关于Token的理解
           
         </div>
       </a>
@@ -108,6 +108,26 @@
 
   
     
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '328f9c97b98460aadc05',
+      clientSecret: '0591555b738279ffde6163acc71369a146c36286',
+      repo: 'gitalk',
+      owner: 'MagnificentSun',
+      admin: ['MagnificentSun'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
   
 
 </article>

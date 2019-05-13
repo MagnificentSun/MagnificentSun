@@ -54,8 +54,8 @@
 
       
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><a id="more"></a>
-<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
@@ -67,7 +67,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://magnificentsun.github.io/blog/2019/04/28/hello-world/" data-id="cjvlztwo700028wfsp35bv38i" class="article-share-link">Share</a>
+      <a data-url="https://magnificentsun.github.io/blog/2019/04/28/hello-world/" data-id="cjvm0j0ta000044fsrsjvuckn" class="article-share-link">Share</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo基础/">hexo基础</a></li></ul>
 
@@ -79,19 +79,19 @@
     
   <nav class="article-nav">
     
-      <a href="/2019/04/28/Token/" class="article-nav-link">
+      <a href="/2019/05/09/关于MarkDown语法/" class="article-nav-link">
         <strong class="article-nav-caption">Newer posts</strong>
         <div class="article-nav-title">
           
-            关于Token的理解
+            关于MarkDown语法
           
         </div>
       </a>
     
     
-      <a href="/2019/04/28/你好 Mr·Sun！/" class="article-nav-link">
+      <a href="/2019/04/28/Token/" class="article-nav-link">
         <strong class="article-nav-caption">Olde posts</strong>
-        <div class="article-nav-title">你好,Mr·Sun！</div>
+        <div class="article-nav-title">关于Token的理解</div>
       </a>
     
   </nav>
@@ -101,6 +101,26 @@
 
   
     
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '328f9c97b98460aadc05',
+      clientSecret: '0591555b738279ffde6163acc71369a146c36286',
+      repo: 'gitalk',
+      owner: 'MagnificentSun',
+      admin: ['MagnificentSun'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
   
 
 </article>
