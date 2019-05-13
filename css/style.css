@@ -878,7 +878,7 @@ html {
 }
 body {
   background-color: #fff;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Î¢ÈíÑÅºÚ", Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "å¾®è½¯é›…é»‘", Arial, sans-serif;
   font-size: 1.4rem;
   line-height: 1.7;
   color: #1e3e3f;
@@ -1021,7 +1021,7 @@ img {
   margin-bottom: 0;
 }
 .article-entry blockquote footer cite:before {
-  content: "¡ª";
+  content: "â€”";
   padding: 0 0.5rem;
 }
 .jumbotron {
@@ -2035,6 +2035,60 @@ pre .javascript .function {
 }
 .totop:hover > i {
   animation: rocket 0.3s ease-in-out;
+}
+@-moz-keyframes rocket {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  45% {
+    transform: translateY(-3.2rem);
+    opacity: 0;
+  }
+  55% {
+    transform: translateY(3.2rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes rocket {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  45% {
+    transform: translateY(-3.2rem);
+    opacity: 0;
+  }
+  55% {
+    transform: translateY(3.2rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@-o-keyframes rocket {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  45% {
+    transform: translateY(-3.2rem);
+    opacity: 0;
+  }
+  55% {
+    transform: translateY(3.2rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 @-moz-keyframes rocket {
   0% {
