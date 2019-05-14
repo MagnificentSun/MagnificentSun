@@ -21,8 +21,8 @@
     <url>%2F2019%2F04%2F28%2F%E5%85%B3%E4%BA%8E%E4%BD%A0%E5%A5%BD%20Mr%C2%B7Sun%EF%BC%81%2F</url>
     <content type="text"><![CDATA[一上午的倾情打造 我觉得还是有下划线的标题好看 所以我就用了最大 但是我觉得密钥代码好长所以给大家分享福利^_^检查是否由.ssh的文件夹cd ~/.ssh 输入ls，列出该文件下的内容ls 输入ssh-keygen -t rsa -C “929762930@qq.com”，连续三个回车，生成密钥，最后得到了两个文件：id_rsa和id_rsa.pub（默认存储路径是：C:\Users\Administrator.ssh)ssh-keygen -t rsa -C “*****@qq.com” 输入eval “$(ssh-agent -s)”，添加密钥到ssh-agenteval &quot;$(ssh-agent -s)&quot; 再输入ssh-add ~/.ssh/id_rsa，添加生成的SSH key到ssh-agentssh-add ~/.ssh/id_rsa 1进入Github，点击头像下的settings，添加ssh 收尾]]></content>
       <tags>
-        <tag>github</tag>
         <tag>hexo</tag>
+        <tag>github</tag>
         <tag>npm</tag>
       </tags>
   </entry>
