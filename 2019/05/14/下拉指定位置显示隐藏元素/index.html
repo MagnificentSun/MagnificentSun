@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    下拉指定位置显示隐藏元素 |
+    
+    Mr·Sun</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-下拉指定位置显示隐藏元素" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      下拉指定位置显示隐藏元素
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/05/14/下拉指定位置显示隐藏元素/" class="article-date">
+  <time datetime="2019-05-14T11:59:08.000Z" itemprop="datePublished">2019-05-14</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h3 id="应用于移动端下拉到某个位置，显示某些元素"><a href="#应用于移动端下拉到某个位置，显示某些元素" class="headerlink" title="应用于移动端下拉到某个位置，显示某些元素"></a>应用于移动端下拉到某个位置，显示某些元素</h3><h3 id="壹、HTML部分"><a href="#壹、HTML部分" class="headerlink" title="壹、HTML部分"></a>壹、HTML部分</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"son"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"eBtn"</span> <span class="attr">onclick</span>=<span class="string">"eBtnClick()"</span> <span class="attr">class</span>=<span class="string">"e-btn fixed-btn"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"txt"</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="贰、JS部分"><a href="#贰、JS部分" class="headerlink" title="贰、JS部分"></a>贰、JS部分</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入 JQ</span></span><br><span class="line">&lt;script src=<span class="string">"http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 绑定滚动条事件</span></span><br><span class="line">    $(<span class="string">"#box"</span>).bind(<span class="string">"scroll"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> sTop = $(<span class="string">"#box"</span>).scrollTop();</span><br><span class="line">      <span class="keyword">var</span> sTop = <span class="built_in">parseInt</span>(sTop);</span><br><span class="line">      <span class="comment">// 设置显示位置</span></span><br><span class="line">      <span class="keyword">if</span> (sTop &gt;= <span class="number">348</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!$(<span class="string">"#eBtn"</span>).is(<span class="string">":visible"</span>)) &#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">            $(<span class="string">"#eBtn"</span>).slideDown();</span><br><span class="line">          &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            $(<span class="string">"#eBtn"</span>).show();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">"执行了"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// console.log(sTop)</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> ($(<span class="string">"#eBtn"</span>).is(<span class="string">":visible"</span>)) &#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">            $(<span class="string">"#eBtn"</span>).slideUp();</span><br><span class="line">          &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            $(<span class="string">"#eBtn"</span>).hide();</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="叁、CSS部分"><a href="#叁、CSS部分" class="headerlink" title="叁、CSS部分"></a>叁、CSS部分</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line">   <span class="selector-tag">html</span>,</span><br><span class="line">   <span class="selector-tag">body</span> &#123;</span><br><span class="line">     <span class="attribute">font-family</span>: FZLANTINGHEIPro_04_OPPO--GB1-<span class="number">4</span>, PingFangSC-Regular;</span><br><span class="line">     <span class="attribute">margin</span>: <span class="number">0px</span>;</span><br><span class="line">     <span class="attribute">padding</span>: <span class="number">0px</span>;</span><br><span class="line">     <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">     <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="selector-tag">body</span> &#123;</span><br><span class="line">     <span class="attribute">max-width</span>: <span class="number">600px</span>;</span><br><span class="line">     <span class="attribute">margin</span>: auto;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="selector-class">.box</span> &#123;</span><br><span class="line">     <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">     <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">     <span class="attribute">overflow</span>: scroll;</span><br><span class="line">     <span class="attribute">-webkit-overflow-scrolling</span>: touch;</span><br><span class="line">     <span class="attribute">line-height</span>: <span class="number">1.5</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="selector-class">.box</span> <span class="selector-class">.e-btn</span> &#123;</span><br><span class="line">     <span class="attribute">height</span>: <span class="number">44px</span>;</span><br><span class="line">     <span class="attribute">line-height</span>: <span class="number">44px</span>;</span><br><span class="line">     <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">     <span class="attribute">border-radius</span>: <span class="number">7.3333px</span>;</span><br><span class="line">     <span class="attribute">text-align</span>: center;</span><br><span class="line">     <span class="attribute">background</span>: green;</span><br><span class="line">     <span class="attribute">border-color</span>: <span class="number">#66b1ff</span>;</span><br><span class="line">     <span class="attribute">color</span>: <span class="number">#FFF</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="selector-class">.box</span> <span class="selector-class">.e-btn</span> <span class="selector-class">.txt</span> &#123;</span><br><span class="line">     <span class="attribute">font-family</span>: ColorFont-Medium;</span><br><span class="line">     <span class="attribute">font-size</span>: <span class="number">15px</span>;</span><br><span class="line">     <span class="attribute">color</span>: <span class="number">#ffffff</span>;</span><br><span class="line">     <span class="attribute">letter-spacing</span>: <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="selector-class">.box</span> <span class="selector-class">.fixed-btn</span> &#123;</span><br><span class="line">     <span class="attribute">position</span>: fixed;</span><br><span class="line">     <span class="comment">/* width: 86.6666%; */</span></span><br><span class="line">     <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">     <span class="attribute">max-width</span>: <span class="number">600px</span>;</span><br><span class="line">     <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">     <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">     <span class="attribute">margin</span>: auto;</span><br><span class="line">     <span class="attribute">bottom</span>: <span class="number">5px</span>;</span><br><span class="line">     <span class="attribute">z-index</span>: <span class="number">9999</span>;</span><br><span class="line">     <span class="attribute">border-radius</span>: <span class="number">0px</span>;</span><br><span class="line">     <span class="attribute">bottom</span>: <span class="number">0px</span>;</span><br><span class="line">     <span class="attribute">display</span>: none;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="selector-class">.box</span> <span class="selector-class">.son</span> &#123;</span><br><span class="line">     <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">     <span class="attribute">height</span>: <span class="number">1600px</span>;</span><br><span class="line">     <span class="attribute">background</span>: brown;</span><br><span class="line">   &#125;</span><br><span class="line"> &lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="特别提醒"><a href="#特别提醒" class="headerlink" title="特别提醒"></a>特别提醒</h4><p>-webkit-overflow-scrolling:touch是什么？  </p>
+<blockquote>
+<p><code>-webkit-overflow-scrolling</code> 属性控制元素在移动设备上是否使用滚动回弹效果.<br><code>auto</code>: 使用普通滚动, 当手指从触摸屏上移开，滚动会立即停止。<br><code>touch</code>: 使用具有回弹效果的滚动, 当手指从触摸屏上移开，内容会继续保持一段时间的滚动效果。继续滚动的速度和持续的时间和滚动手势的强烈程度成正比。同时也会创建一个新的堆栈上下文。</p>
+</blockquote>
+<p>在移动端上，在你用<code>overflow-y:scorll</code>属性的时候，你会发现滚动的效果很木，很慢，这时候可以使用<code>-webkit-overflow-scrolling:touch</code>这个属性，让滚动条产生滚动回弹的效果，就像ios原生的滚动条一样流畅。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://magnificentsun.github.io/blog/2019/05/14/下拉指定位置显示隐藏元素/" data-id="cjvnrw5h70000ysfs1yrin6fg" class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/05/14/关于FormData/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">关于FormData</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '328f9c97b98460aadc05',
+      clientSecret: '0591555b738279ffde6163acc71369a146c36286',
+      repo: 'gitalk',
+      owner: 'MagnificentSun',
+      admin: ['MagnificentSun'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 Mr·Sun</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+      <li>GitHub  <a href="https://github.com/MagnificentSun">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/center.svg" alt="Mr·Sun"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+      <li class="nav-item">
+          <div class="totop" id="totop">
+    <i class="fe fe-rocket"></i>
+</div>
+      </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
