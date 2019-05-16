@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    JQuery基础 |
+    
+    Mr·Sun</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-JQuery-整理" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JQuery基础
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/05/16/JQuery-整理/" class="article-date">
+  <time datetime="2019-05-16T06:46:53.000Z" itemprop="datePublished">2019-05-16</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h3 id="个人理解：-JQ就是JS各种东西的封装-俗话说你觉得麻烦的东西都已经有人帮你做了-噢耶"><a href="#个人理解：-JQ就是JS各种东西的封装-俗话说你觉得麻烦的东西都已经有人帮你做了-噢耶" class="headerlink" title="个人理解：  JQ就是JS各种东西的封装 俗话说你觉得麻烦的东西都已经有人帮你做了 噢耶~"></a>个人理解：  JQ就是JS各种东西的封装 俗话说你觉得麻烦的东西都已经有人帮你做了 噢耶~</h3><blockquote>
+<p>有两种方法使用<br>第一种：引CDN<br>第二种：下载文件，页面引用</p>
+</blockquote>
+<h3 id="壹、送上DNS地址"><a href="#壹、送上DNS地址" class="headerlink" title="壹、送上DNS地址"></a>壹、送上DNS地址</h3><ul>
+<li><h3 id="新浪"><a href="#新浪" class="headerlink" title="新浪"></a>新浪</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;script src=<span class="string">"https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a> 
+<ul>
+<li><h3 id="百度"><a href="#百度" class="headerlink" title="百度"></a>百度</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;script src=<span class="string">"https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="Google-CDN"><a href="#Google-CDN" class="headerlink" title="Google CDN"></a>Google CDN</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;script src=<span class="string">"https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="Microsoft-CDN"><a href="#Microsoft-CDN" class="headerlink" title="Microsoft CDN"></a>Microsoft CDN</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;script src=<span class="string">"https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="贰、-JS-和-JQ-的入口函数的不同"><a href="#贰、-JS-和-JQ-的入口函数的不同" class="headerlink" title="贰、 JS 和 JQ 的入口函数的不同"></a>贰、 JS 和 JQ 的入口函数的不同</h3><p>JQ入口函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 执行代码</span></span><br><span class="line">&#125;);</span><br><span class="line">或者</span><br><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 执行代码</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>JS 入口函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 执行代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>&nbsp;</th>
+<th>window.onload</th>
+<th>$(document).ready</th>
+<th>　</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>执行时机</td>
+<td>　必须等待网页全部加载完毕（包括图片等），然后再执行包裹代码</td>
+<td>只需要等待网页中的DOM结构加载完毕，就能执行包裹的代码</td>
+<td></td>
+</tr>
+<tr>
+<td>执行次数</td>
+<td>只能执行一次，如果第二次，那么第一次的执行会被覆盖</td>
+<td>可以执行多次，第N次都不会覆盖上一次</td>
+<td></td>
+</tr>
+<tr>
+<td>简写方案</td>
+<td>无</td>
+<td><code>$(function(){});</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="叁、JQ的事件"><a href="#叁、JQ的事件" class="headerlink" title="叁、JQ的事件"></a>叁、JQ的事件</h3><h4 id="一个实例"><a href="#一个实例" class="headerlink" title="一个实例"></a>一个实例</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只允许按下的字母键生效, 65~90是所有小写字母的键盘代码范围</span></span><br><span class="line"><span class="keyword">var</span> validKeys = &#123; <span class="attr">start</span>: <span class="number">65</span>, <span class="attr">end</span>: <span class="number">90</span>  &#125;;</span><br><span class="line">$(<span class="string">"#keys"</span>).keydown( validKeys, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> keys = event.data;  <span class="comment">//拿到validKeys对象.</span></span><br><span class="line">    <span class="keyword">return</span> event.which &gt;= keys.start &amp;&amp; event.which &lt;= keys.end;</span><br><span class="line">&#125; );</span><br></pre></td></tr></table></figure>
+<ul>
+<li>1.keydown：在键盘上按下某键时发生,一直按着则会不断触发（opera浏览器除外）, 它返回的是键盘代码;</li>
+<li>2.keypress：在键盘上按下一个按键，并产生一个字符时发生, 返回ASCII码。注意: shift、alt、ctrl等键按下并不会产生字符，所以监听无效 ,换句话说, 只有按下能在屏幕上输出字符的按键时keypress事件才会触发。若一直按着某按键则会不断触发。</li>
+<li><p>3.keyup：用户松开某一个按键时触发, 与keydown相对, 返回键盘代码.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取按键代码或字符的ASCII码</span></span><br><span class="line">$(<span class="built_in">window</span>).keydown( <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">   <span class="comment">// 通过event.which可以拿到按键代码.  如果是keypress事件中,则拿到ASCII码.</span></span><br><span class="line">&#125; );</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.获取事件对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="built_in">window</span>).keypress(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;    </span><br><span class="line">        <span class="comment">//获取事件对象，里面包含各种有用的信息。</span></span><br><span class="line">        <span class="built_in">console</span>.log(event);</span><br><span class="line">        <span class="comment">//console.log(event.which);</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>5.keypress事件获取键入字符</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">window</span>).keypress(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//event.which是获取ASCII码，前面的函数是将ASCII码转换成字符，空格键和Enter键输出均为空白。</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">String</span>.fromCharCode(event.which));</span><br><span class="line">    <span class="comment">//从event对象中key属性获取字符，但是Enter键的key值为"Enter"，空白键还是空白" "。</span></span><br><span class="line">    <span class="built_in">console</span>.log(event.key);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="肆、选择器（这个就不多说了，有点css基础就能看懂）"><a href="#肆、选择器（这个就不多说了，有点css基础就能看懂）" class="headerlink" title="肆、选择器（这个就不多说了，有点css基础就能看懂）"></a>肆、选择器（这个就不多说了，有点css基础就能看懂）</h3><h3 id="不信你点开看看"><a href="#不信你点开看看" class="headerlink" title="不信你点开看看"></a><a href="https://www.runoob.com/jquery/jquery-selectors.html" target="_blank" rel="noopener">不信你点开看看</a></h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://magnificentsun.github.io/blog/2019/05/16/JQuery-整理/" data-id="cjvqd0qeo0000gwfslrp27ek6" class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JQuery/">JQuery</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/05/14/下拉指定位置显示隐藏元素/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">下拉指定位置显示隐藏元素</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '328f9c97b98460aadc05',
+      clientSecret: '0591555b738279ffde6163acc71369a146c36286',
+      repo: 'gitalk',
+      owner: 'MagnificentSun',
+      admin: ['MagnificentSun'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 Mr·Sun</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+      <li>GitHub  <a href="https://github.com/MagnificentSun">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/center.svg" alt="Mr·Sun"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+      <li class="nav-item">
+          <div class="totop" id="totop">
+    <i class="fe fe-rocket"></i>
+</div>
+      </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
