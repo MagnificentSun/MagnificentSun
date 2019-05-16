@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    利用FileReader和FormData实现图片预览和上传 |
+    
+    Mr·Sun</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-利用FileReader和FormData实现图片预览和上传" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      利用FileReader和FormData实现图片预览和上传
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/05/16/利用FileReader和FormData实现图片预览和上传/" class="article-date">
+  <time datetime="2019-05-16T08:24:14.000Z" itemprop="datePublished">2019-05-16</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h3 id="图片预览上传需求，过去都是客户端上传给后端，后端返回-url-前端进行预览。现在可以依赖-FileReader-和-FormData-这两个对象和-JavaScript-处理二进制的能力。"><a href="#图片预览上传需求，过去都是客户端上传给后端，后端返回-url-前端进行预览。现在可以依赖-FileReader-和-FormData-这两个对象和-JavaScript-处理二进制的能力。" class="headerlink" title="图片预览上传需求，过去都是客户端上传给后端，后端返回 url 前端进行预览。现在可以依赖 FileReader 和 FormData 这两个对象和 JavaScript 处理二进制的能力。"></a>图片预览上传需求，过去都是客户端上传给后端，后端返回 url 前端进行预览。现在可以依赖 FileReader 和 FormData 这两个对象和 JavaScript 处理二进制的能力。</h3><blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader" target="_blank" rel="noopener">FileReader</a> 文件阅读器<br><a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData" target="_blank" rel="noopener">FormData</a> 表格数据<br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer" target="_blank" rel="noopener">二进制流</a>  </p>
+</blockquote>
+<h3 id="壹、监听表单文件"><a href="#壹、监听表单文件" class="headerlink" title="壹、监听表单文件"></a>壹、监听表单文件</h3><p><code>&lt;input type=&quot;file&quot;&gt;</code></p>
+<p><code>input.on.(&#39;change&#39;, preview);</code></p>
+<a id="more"></a> 
+<h3 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h3><p>预览使用 FileReader 对象来读：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">preview</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> file = e.target.files[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line"> </span><br><span class="line">    reader.onloadend = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 图片的 base64 格式, 可以直接当成 img 的 src 属性值</span></span><br><span class="line">        <span class="keyword">var</span> dataURL = reader.result;</span><br><span class="line">        <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">        img.src = dataURL;</span><br><span class="line">        <span class="comment">// 插入到 DOM 中预览</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;;</span><br><span class="line"> </span><br><span class="line">    reader.readAsDataURL(file); <span class="comment">// 读出 base64</span></span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="贰、提交图片文件（二进制文件-非-base64）"><a href="#贰、提交图片文件（二进制文件-非-base64）" class="headerlink" title="贰、提交图片文件（二进制文件 非 base64）"></a>贰、提交图片文件（二进制文件 非 base64）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * dataURL to blob, ref to https://gist.github.com/fupslot/5015897</span></span><br><span class="line"><span class="comment"> * @param dataURI</span></span><br><span class="line"><span class="comment"> * @returns &#123;Blob&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dataURItoBlob</span>(<span class="params">dataURI</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> byteString = atob(dataURI.split(<span class="string">','</span>)[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">var</span> mimeString = dataURI.split(<span class="string">','</span>)[<span class="number">0</span>].split(<span class="string">':'</span>)[<span class="number">1</span>].split(<span class="string">';'</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> ab = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(byteString.length);</span><br><span class="line">    <span class="keyword">var</span> ia = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(ab);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; byteString.length; i++) &#123;</span><br><span class="line">        ia[i] = byteString.charCodeAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Blob([ab], &#123;<span class="attr">type</span>: mimeString&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><font face="黑体" color="red">base64转二进制文件</font><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * dataURL to blob, ref to https://gist.github.com/fupslot/5015897</span></span><br><span class="line"><span class="comment"> * @param dataURI</span></span><br><span class="line"><span class="comment"> * @returns &#123;Blob&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dataURItoBlob</span>(<span class="params">dataURI</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> byteString = atob(dataURI.split(<span class="string">','</span>)[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">var</span> mimeString = dataURI.split(<span class="string">','</span>)[<span class="number">0</span>].split(<span class="string">':'</span>)[<span class="number">1</span>].split(<span class="string">';'</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> ab = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(byteString.length);</span><br><span class="line">    <span class="keyword">var</span> ia = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(ab);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; byteString.length; i++) &#123;</span><br><span class="line">        ia[i] = byteString.charCodeAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Blob([ab], &#123;<span class="attr">type</span>: mimeString&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="叁、构造-FormData-填充二进制文件数据，通过-ajax-的方式进行提交："><a href="#叁、构造-FormData-填充二进制文件数据，通过-ajax-的方式进行提交：" class="headerlink" title="叁、构造 FormData 填充二进制文件数据，通过 ajax 的方式进行提交："></a>叁、构造 FormData 填充二进制文件数据，通过 ajax 的方式进行提交：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fd = <span class="keyword">new</span> FormData();</span><br><span class="line"><span class="keyword">var</span> blob = dataURItoBlob(dataURL);</span><br><span class="line">fd.append(<span class="string">'file'</span>, blob);</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    type: <span class="string">'POST'</span>,</span><br><span class="line">    url: <span class="string">'/upload'</span>,</span><br><span class="line">    data: fd,</span><br><span class="line">    processData: <span class="literal">false</span>, <span class="comment">// 不会将 data 参数序列化字符串</span></span><br><span class="line">    contentType: <span class="literal">false</span>, <span class="comment">// 根据表单 input 提交的数据使用其默认的 contentType</span></span><br><span class="line">    xhr: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="built_in">window</span>.XMLHttpRequest();</span><br><span class="line">        xhr.upload.addEventListener(<span class="string">"progress"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (evt.lengthComputable) &#123;</span><br><span class="line">                <span class="keyword">var</span> percentComplete = evt.loaded / evt.total;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'进度'</span>, percentComplete);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="literal">false</span>);</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> xhr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).success(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 拿到提交的结果</span></span><br><span class="line">&#125;).error(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.error(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><font color="red" size="3">注意还有图片 压缩！！！ 利用canvas</font></p>
+<ul>
+<li>在 new 出来的 Image 对象，我们监听它的 onload 事件</li>
+<li>按照压缩比例，算出压缩后的图片尺寸</li>
+<li>创建 canvas ，尺寸设置成上一步骤算出来的压缩后的图片尺寸</li>
+<li>调用 drawImage 方法，把图片绘制到 canvas 中</li>
+<li>调用 canvas 的 toDataURL ，取出 base64 格式的数据</li>
+<li>后续的传图步骤和上面的原图上传一样<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line"> </span><br><span class="line">img.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 当图片宽度超过 400px 时, 就压缩成 400px, 高度按比例计算</span></span><br><span class="line">    <span class="comment">// 压缩质量可以根据实际情况调整</span></span><br><span class="line">    <span class="keyword">var</span> w = <span class="built_in">Math</span>.min(<span class="number">400</span>, img.width);</span><br><span class="line">    <span class="keyword">var</span> h = img.height * (w / img.width);</span><br><span class="line">    <span class="keyword">var</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>);</span><br><span class="line">    <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 设置 canvas 的宽度和高度</span></span><br><span class="line">    canvas.width = w;</span><br><span class="line">    canvas.height = h;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 把图片绘制到 canvas 中</span></span><br><span class="line">    ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, w, h);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 取出 base64 格式数据</span></span><br><span class="line">    <span class="keyword">var</span> dataURL = canvas.toDataURL(<span class="string">'image/png'</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">img.src = reader.result;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://magnificentsun.github.io/blog/2019/05/16/利用FileReader和FormData实现图片预览和上传/" data-id="cjvqgkybd0008ecfsghgh6wu6" class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/05/16/JQuery-整理/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">JQuery基础</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '328f9c97b98460aadc05',
+      clientSecret: '0591555b738279ffde6163acc71369a146c36286',
+      repo: 'gitalk',
+      owner: 'MagnificentSun',
+      admin: ['MagnificentSun'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 Mr·Sun</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+      <li>GitHub  <a href="https://github.com/MagnificentSun">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/center.svg" alt="Mr·Sun"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+      <li class="nav-item">
+          <div class="totop" id="totop">
+    <i class="fe fe-rocket"></i>
+</div>
+      </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
