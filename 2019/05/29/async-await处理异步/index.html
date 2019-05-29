@@ -53,7 +53,9 @@
       
 
       
-        <h3 id="大神杰作"><a href="#大神杰作" class="headerlink" title="大神杰作"></a>大神杰作</h3><p>个人觉得对 async 和 await 的理解<font color="red">（其实就是 async 返回的Promise 然后 await 只能用在 async 后面 故 await 就拿到 它的成功或者失败回调 然后进行处理 完美解决毁掉地狱）</font></p>
+        <h3 id="大神杰作"><a href="#大神杰作" class="headerlink" title="大神杰作"></a>大神杰作</h3><blockquote>
+<p>个人觉得对 async 和 await 的理解<font color="red">（其实就是 async 返回的Promise 然后 await 只能用在 async 后面 故 await 就拿到 它的成功或者失败回调 然后进行处理 完美解决毁掉地狱）</font></p>
+</blockquote>
 <p>先说一下async的用法，它作为一个关键字放到函数前面，用于表示函数是一个异步函数，因为async就是异步的意思， 异步函数也就意味着该函数的执行不会阻塞后面代码的执行。 写一个async 函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下代码都可控制台打印</span></span><br><span class="line"><span class="comment">// 除了最底下的 node 项目</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">　　<span class="keyword">return</span> <span class="string">'hello world'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a> 
 <p> 语法很简单，就是在函数前面加上async 关键字，来表示它是异步的，那怎么调用呢？async 函数也是函数，平时我们怎么使用函数就怎么使用它，直接加括号调用就可以了，为了表示它没有阻塞它后面代码的执行，我们在async 函数调用之后加一句console.log;<br> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hello world'</span></span><br><span class="line">&#125;</span><br><span class="line">timeout();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'虽然在后面，但是我先执行'</span>);</span><br></pre></td></tr></table></figure></p>
@@ -74,7 +76,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://magnificentsun.github.io/blog/2019/05/29/async-await处理异步/" data-id="cjw8zkxn40001v0fsm4kysrkz" class="article-share-link">Share</a>
+      <a data-url="https://magnificentsun.github.io/blog/2019/05/29/async-await处理异步/" data-id="cjw8zorkc0002v0fso9onnpmd" class="article-share-link">Share</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VUE/">VUE</a></li></ul>
 
